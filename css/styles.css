@@ -1,4 +1,4 @@
-/* Colors */
+/* ===== Colors ===== */
 :root {
   --bg-color: #ffffff;
   --text-color: #222222;
@@ -7,9 +7,14 @@
   --border-color: #d0d5db;
 }
 
-/* General */
+/* ===== General ===== */
 * {
   box-sizing: border-box;
+}
+
+/* Smooth scrolling for the nav links */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -24,13 +29,40 @@ section {
   padding: 40px 20px;
   max-width: 1000px;
   margin: 0 auto;
+  /* Keeps a section's heading below the sticky header when a nav link is clicked */
+  scroll-margin-top: 80px;
 }
 
 h2 {
   color: var(--accent-color);
 }
 
-/* Header and navigation */
+/* ===== Buttons ===== */
+button {
+  margin-top: 20px;
+  padding: 12px;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+/* After :hover so a disabled button does not react to the mouse */
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ===== Header and navigation ===== */
 header {
   display: flex;
   justify-content: space-between;
@@ -57,14 +89,52 @@ nav a:hover {
   opacity: 0.75;
 }
 
-/* About section */
+/* The link of the section that is on screen */
+nav a.active {
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+#theme-toggle {
+  margin-top: 0;
+  background-color: white;
+  color: var(--accent-color);
+}
+
+/* ===== About section ===== */
 .tagline {
   font-size: 1.2rem;
   font-style: italic;
   color: var(--accent-color);
 }
 
-/* Projects section */
+/* Visitor name box */
+#name-box {
+  margin: 10px 0;
+}
+
+#name-box input {
+  max-width: 220px;
+}
+
+#name-box button,
+#change-name-btn {
+  margin-top: 0;
+  padding: 8px 14px;
+}
+
+/* ===== Projects section ===== */
+#project-search {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+#no-results {
+  font-style: italic;
+}
+
 .projects-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -90,7 +160,7 @@ nav a:hover {
   border-radius: 6px;
 }
 
-/* Quotes section */
+/* ===== Quotes section ===== */
 #quote-box {
   background-color: var(--box-color);
   border: 1px solid var(--border-color);
@@ -114,12 +184,7 @@ nav a:hover {
   margin-top: 10px;
 }
 
-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-/* Contact section */
+/* ===== Contact section ===== */
 #contact h2 {
   text-align: center;
 }
@@ -133,6 +198,32 @@ form {
   background-color: var(--box-color);
   border: 1px solid var(--border-color);
   border-radius: 8px;
+}
+
+label {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input,
+textarea {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+#message-count {
+  text-align: right;
+  font-size: 0.85rem;
+  margin: 5px 0 0;
+}
+
+#send-hint {
+  font-size: 0.9rem;
+  margin: 10px 0 0;
 }
 
 /* Form messages */
@@ -152,63 +243,12 @@ form {
   margin-top: 15px;
 }
 
-#message-count {
-  text-align: right;
-  font-size: 0.85rem;
-  margin: 5px 0 0;
-}
-
-#send-hint {
-  font-size: 0.9rem;
-  margin: 10px 0 0;
-}
-
+/* Hidden spam trap for the form service */
 .hp-field {
   display: none;
 }
 
-/* Lighter colors for dark mode so they stay readable */
-body.dark-mode .error {
-  color: #ff8a8a;
-}
-
-body.dark-mode #form-success {
-  color: #7ddc92;
-}
-
-label {
-  margin-top: 15px;
-  font-weight: bold;
-}
-
-input,
-textarea {
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  font-family: inherit;
-  font-size: 1rem;
-}
-
-button {
-  margin-top: 20px;
-  padding: 12px;
-  background-color: var(--accent-color);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-button:hover {
-  opacity: 0.85;
-  transform: translateY(-2px);
-}
-
-/* Footer*/
+/* ===== Footer ===== */
 footer {
   display: flex;
   justify-content: space-between;
@@ -224,7 +264,7 @@ footer p {
   margin: 0;
 }
 
-/* The "thanks for staying" note*/
+/* The "thanks for staying" note sits on its own line */
 #timer-note {
   flex-basis: 100%;
   text-align: center;
@@ -232,6 +272,65 @@ footer p {
 
 #timer-note:empty {
   display: none;
+}
+
+/* ===== Dark mode ===== */
+body.dark-mode {
+  --bg-color: #121a21;
+  --text-color: #e8edf1;
+  --box-color: #1c262f;
+  --border-color: #33424f;
+}
+
+body.dark-mode h2,
+body.dark-mode .tagline {
+  color: #5bb5e8;
+}
+
+body.dark-mode input,
+body.dark-mode textarea {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Lighter colors so messages stay readable */
+body.dark-mode .error {
+  color: #ff8a8a;
+}
+
+body.dark-mode #form-success {
+  color: #7ddc92;
+}
+
+/* ===== Animations ===== */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.project-box,
+.error,
+#form-success,
+#no-results {
+  animation: fade-in 0.4s ease;
+}
+
+/* ===== Responsive design (media queries last) ===== */
+
+/* Sticky header on laptops and tablets. On phones it stacks and is tall, so it scrolls normally */
+@media (min-width: 601px) {
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
 }
 
 /* Tablet */
@@ -262,74 +361,14 @@ footer p {
   }
 }
 
-/* Theme button */
-#theme-toggle {
-  margin-top: 0;
-  background-color: white;
-  color: var(--accent-color);
-}
-
-/* Dark mode */
-body.dark-mode {
-  --bg-color: #121a21;
-  --text-color: #e8edf1;
-  --box-color: #1c262f;
-  --border-color: #33424f;
-}
-
-body.dark-mode h2,
-body.dark-mode .tagline {
-  color: #5bb5e8;
-}
-
-body.dark-mode input,
-body.dark-mode textarea {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-}
-
-/* Project search box */
-#project-search {
-  width: 100%;
-  max-width: 400px;
-  margin-bottom: 20px;
-}
-
-#no-results {
-  font-style: italic;
-}
-
-/* Visitor name box */
-#name-box {
-  margin: 10px 0;
-}
-
-#name-box input {
-  max-width: 220px;
-}
-
-#name-box button,
-#change-name-btn {
-  margin-top: 0;
-  padding: 8px 14px;
-}
-
-/* Animations */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
+/* Turn off animation and smooth scrolling for people who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
   }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  html {
+    scroll-behavior: auto;
   }
-}
-
-.project-box,
-.error,
-#form-success,
-#no-results {
-  animation: fade-in 0.4s ease;
 }

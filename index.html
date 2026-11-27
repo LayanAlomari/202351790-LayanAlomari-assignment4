@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal portfolio of Layan Alomari, a Computer Science student at KFUPM, with projects, a quotes feature and a contact form.">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <!-- Header with site name and navigation -->
+    <header>
+        <h1>My Portfolio</h1>
+        <nav>
+            <a href="#about">About Me</a>
+            <a href="#projects">Projects</a>
+            <a href="#quotes">Quotes</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <!-- Theme toggle button -->
+        <button id="theme-toggle">Dark Mode</button>
+    </header>
+
+    <main>
+
+        <!-- About Me -->
+        <section id="about">
+            <h2>About Me</h2>
+            <p id="greeting"></p>
+            <!-- Visitor name -->
+            <div id="name-box">
+                <label for="visitor-name">What should I call you?</label>
+                <input type="text" id="visitor-name" maxlength="30">
+                <button id="save-name-btn" type="button">Save name</button>
+                <p class="error" id="name-message"></p>
+            </div>
+            <button id="change-name-btn" type="button" hidden>Not you? Change name</button>
+            <p class="tagline">Computer science student who's always excited to learn something new.</p>
+            <p>
+                my name is Layan Alomari, a junior Computer Science student at King Fahd University of Petroleum and
+                Minerals (KFUPM).
+                I’m continuously developing my skills, exploring new areas of computer science,
+                and seeking opportunities to learn, create, and grow as a future technology professional.
+            </p>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects">
+            <h2>Projects</h2>
+
+            <!-- Search box -->
+            <label for="project-search">Search projects</label>
+            <input type="search" id="project-search" placeholder="Type a project name or keyword...">
+
+            <!-- Shown only when nothing matches -->
+            <p id="no-results" hidden>No projects found. Try a different word.</p>
+
+            <div class="projects-container">
+                <article class="project-box">
+                    <h3>Project One: Flying Stars Game</h3>
+                    <p>A fast-paced color-matching game where players guide a colored ball toward the matching edge of a
+                        growing star.
+                        The game tracks accuracy and reaction time, challenging players to think and act quickly.</p>
+                    <img src="assets/images/flying-stars.jpg" alt="Screenshot of the Flying Stars game" width="800" height="638" loading="lazy">
+                </article>
+
+                <article class="project-box">
+                    <h3>Project Two: Daleel KFUPM Platform</h3>
+                    <p>Daleel KFUPM is a digital platform that brings academic resources, past exams, student
+                        experiences, and course information together in one organized place.
+                        It helps KFUPM students find what they need quickly and makes their academic journey easier and
+                        less stressful.</p>
+                    <img src="assets/images/daleel-kfupm.jpg" alt="Screenshot of the Daleel KFUPM platform" width="800" height="414" loading="lazy">
+                </article>
+            </div>
+        </section>
+
+        <!-- Quotes section: loads a random quote from an API -->
+        <section id="quotes">
+            <h2>Inspirational Quote</h2>
+
+            <div id="quote-box">
+                <p id="quote-text">Loading...</p>
+                <p id="quote-author"></p>
+            </div>
+
+            <button id="new-quote-btn" type="button">New Quote</button>
+            <p id="quote-status" role="status"></p>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <form id="contact-form" novalidate>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+                <p class="error" id="name-error"></p>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <p class="error" id="email-error"></p>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" maxlength="500" required></textarea>
+                <p id="message-count">0 / 500</p>
+                <p class="error" id="message-error"></p>
+
+                <button type="submit" id="send-btn" disabled>Send</button>
+                <p id="send-hint">Fill in every field correctly to enable the Send button.</p>
+
+                <!-- Shown after a valid submit -->
+                <p id="form-success" role="status" hidden></p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Layan Alomari</p>
+        <p id="session-timer"></p>
+        <p id="timer-note"></p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

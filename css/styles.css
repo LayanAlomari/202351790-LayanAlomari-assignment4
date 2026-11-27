@@ -1,0 +1,331 @@
+/* Colors */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #222222;
+  --accent-color: #0a5987;
+  --box-color: #f4f6f8;
+  --border-color: #d0d5db;
+}
+
+/* General */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+section {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+h2 {
+  color: var(--accent-color);
+}
+
+/* Header and navigation */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: var(--accent-color);
+  color: white;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  transition: opacity 0.2s ease;
+}
+
+nav a:hover {
+  text-decoration: underline;
+  opacity: 0.75;
+}
+
+/* About section */
+.tagline {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--accent-color);
+}
+
+/* Projects section */
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.project-box {
+  background-color: var(--box-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.project-box img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* Quotes section */
+#quote-box {
+  background-color: var(--box-color);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--accent-color);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+#quote-text {
+  font-size: 1.2rem;
+  font-style: italic;
+  margin: 0 0 10px;
+}
+
+#quote-author {
+  font-weight: bold;
+  margin: 0;
+}
+
+#quote-status {
+  margin-top: 10px;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Contact section */
+#contact h2 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 25px;
+  background-color: var(--box-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+/* Form messages */
+.error {
+  color: #b00020;
+  font-size: 0.9rem;
+  margin: 5px 0 0;
+}
+
+.error:empty {
+  display: none;
+}
+
+#form-success {
+  color: #1b6e2d;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+#message-count {
+  text-align: right;
+  font-size: 0.85rem;
+  margin: 5px 0 0;
+}
+
+#send-hint {
+  font-size: 0.9rem;
+  margin: 10px 0 0;
+}
+
+/* Lighter colors for dark mode so they stay readable */
+body.dark-mode .error {
+  color: #ff8a8a;
+}
+
+body.dark-mode #form-success {
+  color: #7ddc92;
+}
+
+label {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input,
+textarea {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+/* Footer*/
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px 20px;
+  padding: 20px;
+  background-color: var(--box-color);
+  border-top: 1px solid var(--border-color);
+}
+
+footer p {
+  margin: 0;
+}
+
+/* The "thanks for staying" note*/
+#timer-note {
+  flex-basis: 100%;
+  text-align: center;
+}
+
+#timer-note:empty {
+  display: none;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  section {
+    padding: 30px 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav a {
+    margin: 0 10px;
+  }
+
+  .projects-container {
+    grid-template-columns: 1fr;
+  }
+
+  footer {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* Theme button */
+#theme-toggle {
+  margin-top: 0;
+  background-color: white;
+  color: var(--accent-color);
+}
+
+/* Dark mode */
+body.dark-mode {
+  --bg-color: #121a21;
+  --text-color: #e8edf1;
+  --box-color: #1c262f;
+  --border-color: #33424f;
+}
+
+body.dark-mode h2,
+body.dark-mode .tagline {
+  color: #5bb5e8;
+}
+
+body.dark-mode input,
+body.dark-mode textarea {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Project search box */
+#project-search {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+#no-results {
+  font-style: italic;
+}
+
+/* Visitor name box */
+#name-box {
+  margin: 10px 0;
+}
+
+#name-box input {
+  max-width: 220px;
+}
+
+#name-box button,
+#change-name-btn {
+  margin-top: 0;
+  padding: 8px 14px;
+}
+
+/* Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.project-box,
+.error,
+#form-success,
+#no-results {
+  animation: fade-in 0.4s ease;
+}

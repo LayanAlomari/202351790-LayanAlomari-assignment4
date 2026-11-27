@@ -85,6 +85,7 @@ const formSuccess = document.getElementById("form-success");
 const sendButton = document.getElementById("send-btn");
 const sendHint = document.getElementById("send-hint");
 const messageCount = document.getElementById("message-count");
+const formError = document.getElementById("form-error");
 
 const MAX_MESSAGE = 500;
 const MIN_MESSAGE = 10;
@@ -144,12 +145,13 @@ fields.forEach(function (field) {
 
 messageInput.addEventListener("input", updateCounter);
 
-form.addEventListener("submit", function (event) {
+form.addEventListener("submit", async function (event) {
   // Stop the page from reloading
   event.preventDefault();
   formSuccess.hidden = true;
+  formError.hidden = true;
 
-  // Check every field again before accepting the form
+  // Check every field again before sending
   let isValid = true;
   fields.forEach(function (field) {
     const message = field.check();
@@ -163,12 +165,37 @@ form.addEventListener("submit", function (event) {
     return;
   }
 
-  // Everything is valid: confirm, then clear the form
-  formSuccess.textContent = "Thanks, " + nameInput.value.trim() + "! Your message was submitted.";
-  formSuccess.hidden = false;
-  form.reset();
-  updateCounter();
-  updateSendButton();
+  // Show a sending state so the user knows something is happening
+  sendButton.disabled = true;
+  sendButton.textContent = "Sending...";
+
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: { Accept: "application/json" }
+    });
+
+    // fetch does not fail on HTTP errors by itself, so we check
+    if (!response.ok) {
+      throw new Error("Server responded with status " + response.status);
+    }
+
+    formSuccess.textContent = "Thanks, " + nameInput.value.trim() + "! Your message was sent.";
+    formSuccess.hidden = false;
+    form.reset();
+    updateCounter();
+  } catch (error) {
+    // Tell the user what happened and what to do next
+    console.error(error);
+    formError.textContent =
+      "Sorry, your message could not be sent. Check your connection and try again.";
+    formError.hidden = false;
+  } finally {
+    // Runs whether it worked or not
+    sendButton.textContent = "Send";
+    updateSendButton();
+  }
 });
 
 // Set the starting state

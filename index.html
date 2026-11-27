@@ -94,7 +94,8 @@
         <!-- Contact -->
         <section id="contact">
             <h2>Contact</h2>
-            <form id="contact-form" novalidate>
+            <form id="contact-form" action="https://formspree.io/f/mwlozjvp" method="POST" novalidate>
+                <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" required>
                 <p class="error" id="name-error"></p>
@@ -113,6 +114,7 @@
 
                 <!-- Shown after a valid submit -->
                 <p id="form-success" role="status" hidden></p>
+                <p class="error" id="form-error" role="alert" hidden></p>
             </form>
         </section>
     </main>

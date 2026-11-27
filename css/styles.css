@@ -163,6 +163,10 @@ form {
   margin: 10px 0 0;
 }
 
+.hp-field {
+  display: none;
+}
+
 /* Lighter colors for dark mode so they stay readable */
 body.dark-mode .error {
   color: #ff8a8a;

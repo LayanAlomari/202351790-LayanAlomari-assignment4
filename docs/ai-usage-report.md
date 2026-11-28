@@ -1,63 +1,59 @@
-# AI Usage Report - Assignment 3
+## AI Usage Report - Assignment 4
 
 ## 1. Tools Used & Use Cases
 
 ### Claude
 I used Claude as my only AI tool for this assignment, as a tutor and code helper. I used it to:
-- Break the assignment into phases and compare API options for my portfolio
-- Set up the repository work: the `.gitignore` template choice, copying my Assignment 2 files, and creating a working branch
-- Get starting code for the new features:
-  - a Quotes section that loads data from an external API, with a loading message and an error message
-  - a contact form with live checks, a character counter and a Send button that stays disabled until the form is valid
-  - remembering the visitor's name with `localStorage`
-  - a timer showing how long the visitor has been on the page
-  - the footer layout, with the copyright on the left and the timer on the right
-- Understand how the code works: `fetch` with `async/await`, `try/catch/finally`, `response.ok`, array methods like `every()` and `forEach()`, `localStorage`, `setInterval` and `Date.now()`
-- Format my code with correct indentation in VS Code
-- Debug problems, such as a duplicate-variable error in my JavaScript and the Lighthouse "can only audit HTTP or HTTPS pages" error
-- Improve performance: run Lighthouse, read its report, resize and compress my images, add image dimensions and add a meta description
-- Check whether `.DS_Store` files were committed to my repository
-- Write first drafts of the technical documentation and the README, and the structure of this report
+- Understand the assignment, compare ideas for the innovation requirement by difficulty, and plan the work in phases
+- Set up the new repository: copying my Assignment 3 files, the `.gitignore` entries and a working branch
+- Get starting code and explanations for the new features:
+  - a contact form that really sends messages, using the Formspree service with `fetch`, a sending state, an error message and a hidden spam-trap field
+  - scroll-aware navigation (a sticky header, smooth scrolling and a highlighted link for the section on screen)
+  - safe helpers around `localStorage`, so the site still works when the browser blocks storage
+- Reorganize my CSS into a cleaner order with all media queries at the end, and review my full JavaScript file
+- Suggest fonts and spacing improvements and fix problems with the mobile header at small screen widths
+- Understand deployment with GitHub Pages and how to read Lighthouse results for the live site
+- Write a first draft of the technical documentation and of this report's structure
+- Help with Git: commit messages that credit AI, merging a branch into `main` with a pull request, and deciding when to merge
+- Suggest an outline for my presentation: the number of slides, what to put on each slide, the timing for the 5-7 minute limit, and tips for the visuals and the recording
 
-I did not use any other AI tool for this assignment. **[check: add any other tool you used]**
+I did not use any other AI tool.
 
 ## 2. Benefits & Challenges
 
 ### Benefits
-- I could ask follow-up questions, such as why the old form code had to be removed and what `.DS_Store` is, and get explanations at my level.
-- Claude compared several API options and tested a few quote APIs before I chose one, which saved me from picking one that did not work in a browser.
-- It helped me read the Lighthouse report and understand which suggestions mattered. Resizing the images made my two screenshots about 77% smaller.
-- It showed me a step-by-step way to write logic (for example, the form checks as small functions that are reused).
-- Splitting the work into phases helped me stay organized.
+- I could ask follow-up questions and get explanations at my level, for example why a disabled button still reacted to hovering and what `IntersectionObserver` does.
+- Claude compared several innovation ideas by how easy they were, which helped me choose two features that I could finish and that added real value.
+- It spotted problems in my code that I had not noticed, such as a CSS ordering bug and the risk that blocked storage would stop my whole script.
+- It helped me read the Lighthouse report and understand which suggestions mattered and which I could ignore.
+- Having the work split into phases helped me stay organized.
 
 ### Challenges
-- **My ideas did not always match the suggestions.** Claude suggested a saved-quotes feature with filtering and sorting, but I did not like it because it did not fit a portfolio. I asked for other options and chose a different set of features. **[check: say whether you added the saved-quotes code or not]**
-- **Generated code needed careful pasting.** I added the new contact form code without removing the old version, and the file had duplicate variable declarations, which caused an error in the editor and would have stopped the whole script. I had to find both versions and delete the old one.
-- **Some instructions were incomplete.** The first Lighthouse steps did not mention that the page has to be served over HTTP, so Lighthouse showed an error when I opened the file directly. I needed to run a local server.
-- **Not every suggestion was worth applying.** Lighthouse suggested minifying my JavaScript, which would save very little and make my code hard to read, so I decided not to do it. Another suggestion came from a browser extension, not from my code.
-- **I had to test everything myself.** The code worked in the examples, but I tested each feature and checked the browser Console to be sure it worked in my project.
+- **Searching for a service.** When I looked for Formspree, search results showed ads for unrelated companies, and I once ended up on a different form service (Cognito Forms) with a sign-up survey. Claude helped me recognize that it was the wrong site, and I typed the real address myself.
+- **Layouts that worked on one phone size but not another.** The navigation looked right at iPhone 16 width but wrapped badly at iPhone SE width. I found this by testing different device sizes, and then fixed it with Claude's suggestion.
+- **Suggestions I did not want.** Claude offered a sticky compact header for phones and extra design polish. I decided to keep the header scrolling on phones and to skip the extra design work so I could finish the documentation and presentation.
+- **Code could not be tested by the AI.** Claude could not run my code in a browser, so I had to test every feature myself, including sending a real message and checking the error handling by going offline.
 
 ## 3. Learning Outcomes
-- **APIs:** how to request data with `fetch`, why `response.ok` must be checked separately, and how to show loading and friendly error messages.
-- **JavaScript:** how `try/catch/finally` works, how to use arrays of objects with `forEach` and `every`, how to use `Date.now()` and `setInterval` for a timer, and why computing time from a start time is more reliable than adding one each second.
-- **State:** how to store and read data with `localStorage`, and how one function can keep the page consistent with the saved state.
-- **Forms:** how to validate in steps (live, when leaving a field, and again on submit) and how to write each rule once.
-- **Performance:** how to use Lighthouse, why large images slow a page, how resizing, compression and image dimensions help, and why some suggestions can be skipped.
-- **Git:** the difference between a file being ignored and a file being tracked, and how to stop tracking a file.
-- **Workflow:** keeping a record of each AI use while I work, so that I can document it honestly.
+- **JavaScript:** how to send form data with `fetch` using `POST` and `FormData`, how to handle success and failure with `try/catch/finally`, how `IntersectionObserver` works, and how to protect code that depends on `localStorage`.
+- **CSS:** how `position: sticky` and `scroll-margin-top` work together, why the order of rules matters (the cascade), why media queries belong at the end, and how to make a layout work on small screens.
+- **Services and privacy:** how a third-party form service works, what data it receives, and why that should be documented.
+- **Deployment:** how GitHub Pages publishes the `main` branch, and why a change is only visible on the live site after it is merged.
+- **Performance:** how Lighthouse results differ between a local server and a live site, and which suggestions I cannot control.
+- **Workflow:** testing on different devices, committing in small steps with the AI credit, and keeping notes as I work so the usage log is accurate.
 
 ## 4. Responsible Use & Modifications
 I did not copy the AI output without checking it. I reviewed each suggestion, made my own decisions and tested the results:
 
-- I rejected the saved-quotes idea and chose the contact form checks, the timer and the visitor name instead.
-- I asked for a different footer layout because I did not like the first one, and applied the new CSS.
-- I fixed the duplicate-variable error myself by finding and removing the old form code.
-- I decided not to apply the JavaScript minification suggestion, and I wrote down why in the technical documentation.
-- I resized and compressed my own screenshots, checked the new file sizes and updated the image tags with the real width and height values.
-- I ran Lighthouse before and after my changes and recorded the scores.
-- I tested each feature: loading quotes and the error message with the browser set to offline, the form rules and the character counter, saving and clearing the visitor name, the timer, and the layout at different screen sizes.
-- I asked questions about parts I did not understand, such as why the old code had to be removed and how to check `.DS_Store`.
-- I credited AI help in my commit messages with an `Assisted-by` line, and listed it in the usage log below.
+- I chose which innovation features to build, based on the options and difficulty levels Claude gave me.
+- I created the Formspree account, entered my own form address and tested it by sending a real message to my inbox, and I tested the error message by going offline.
+- I decided to keep the header scrolling on phones, and to skip extra design polish.
+- I found the navigation problem on small phones by testing different device widths, and I applied and checked the fix.
+- I checked the new JavaScript file and CSS file in the browser after replacing them.
+- I deployed the site myself and ran Lighthouse on the live link, and I recorded the scores for the documentation.
+- I asked questions about things I did not understand, such as what the Formspree and Cognito pages were, and whether a change had to be merged before it appeared on the live site.
+- I credited AI help in my commit messages with an `Assisted-by` line, and I will list all of it in the usage log.
+- I used Claude's slide outline as a starting point, and changed it to fit my own project.
 
 I understand the code in my project and can explain how each part works.
 
@@ -65,17 +61,18 @@ I understand the code in my project and can explain how each part works.
 
 | ID | Tool (model) | Date | Purpose | Files affected | What I changed and how I verified it |
 |---|---|---|---|---|---|
-| C01 | Claude (Sonnet 5.5) | 2026-11-21 | My conversation for this assignment: planning, API options, Git help, explanations, debugging, Lighthouse help and documentation | all files | Full conversation is in `conversations/` in the evidence ZIP |
-| A01 | Claude (Sonnet 5.5) | 2026-11-21 | Quotes section that fetches a random quote from the DummyJSON API, with a loading message and an error message | `index.html`, `js/script.js`, `css/styles.css` | Tested that quotes load and the button gives new ones; tested the error message by setting the browser to Offline in DevTools. Evidence: `artifacts/index.html`, `artifacts/script.js`, `artifacts/styles.css` |
-| A02 | Claude (Sonnet 5.5) | 2026-11-21 | Saved-quotes feature with search and sort (generated but not used) | none in the final project | I did not like the idea because it did not fit a portfolio, so I asked for other options and did not add it. Evidence: `artifacts/script.js`, `artifacts/styles.css`, `artifacts/index.html` |
-| A03 | Claude (Sonnet 5.5) | 2026-11-21 | Contact form live checks, character counter and Send button that stays disabled until valid | `index.html`, `js/script.js`, `css/styles.css` | I first added the new code without removing the old form code, which caused a duplicate-variable error, so I found both versions and deleted the old one. Tested empty fields, a bad email, a short message, the 500-character limit and a valid submit. Evidence: `artifacts/index.html`, `artifacts/script.js`, `artifacts/styles.css` |
-| A04 | Claude (Sonnet 5.5) | 2026-11-21 | Time-on-page timer | `index.html`, `js/script.js` | Watched it count and shortened the 60-second limit temporarily to check the thank-you message. Evidence: `artifacts/index.html`, `artifacts/script.js` |
-| A05 | Claude (Sonnet 5.5) | 2026-11-21 | Visitor name remembered with `localStorage`, and the greeting using it | `index.html`, `js/script.js`, `css/styles.css` | Tested saving a name, an empty name, refreshing, and the "Not you?" button. Evidence: `artifacts/index.html`, `artifacts/script.js`, `artifacts/styles.css` |
-| A06 | Claude (Sonnet 5.5) | 2026-11-21 | Footer layout with the copyright on the left and the timer on the right | `css/styles.css` | I asked for this layout because I did not like the first version, then checked it at desktop and phone width. Evidence: `artifacts/styles.css` |
-| A07 | Claude (Sonnet 5.5) | 2026-11-21 | Performance fixes: resizing and compressing images, image width and height, meta description, `.DS_Store` check | `assets/images/`, `index.html` | I ran Lighthouse before and after (Performance 99 to 100, SEO 91 to 100), resized the images with the `sips` command, checked the new file sizes and used the real dimensions. I skipped the JavaScript minify suggestion. Evidence: `artifacts/index.html` and the conversation |
-| A08 | Claude (Sonnet 5.5) | 2026-11-21 | First draft of the technical documentation | `docs/technical-documentation.md` | I checked each statement against my code. Evidence: `artifacts/technical-documentation.md` |
-| A09 | Claude (Sonnet 5.5) | 2026-11-21 | First draft of the README | `README.md` | I checked each statement against my code. Evidence: `artifacts/README.md` |
-| A10 | Claude (Sonnet 5.5) | 2026-11-21 | First draft of the first four sections of this report | `docs/ai-usage-report.md` | I checked each statement against my code. Evidence: `artifacts/ai-usage-report.md` |
+| C01 | Claude (Sonnet 5.5) | 2026-11-27 | My conversation for this assignment: planning, Git help, explanations, debugging, deployment and Lighthouse help, and documentation | all files | Full conversation is in `conversations/` in the evidence ZIP |
+| A01 | Claude (Sonnet 5.5) | 2026-11-27 | Contact form that sends messages through Formspree: the `fetch` request, the sending state, the error message and the hidden spam-trap field | `index.html`, `js/script.js`, `css/styles.css` | I created the Formspree account and entered my own form address. I tested a real message that reached my inbox, the validation, and the error message by setting the browser to Offline. Evidence: `artifacts/index.html`, `artifacts/script.js`, `artifacts/styles.css` |
+| A02 | Claude (Sonnet 5.5) | 2026-11-27 | Scroll-aware navigation: sticky header, smooth scrolling and a highlighted link for the section on screen | `css/styles.css`, `js/script.js` | I tested scrolling, clicking each link, dark mode and different widths. Evidence: `artifacts/styles.css`, `artifacts/script.js` |
+| A03 | Claude (Sonnet 5.5) | 2026-11-27 | Reorganized CSS file, with all media queries at the end and a fix for a disabled button reacting to hovering | `css/styles.css` | I replaced my file with the new one and compared the page before and after in light and dark mode and at phone width. Evidence: `artifacts/styles.css` |
+| A04 | Claude (Sonnet 5.5) | 2026-11-27 | Font and spacing suggestions (system font stack, section padding) | `css/styles.css` | Applied them and checked each section. Evidence: `artifacts/styles.css` |
+| A05 | Claude (Sonnet 5.5) | 2026-11-27 | Review of my JavaScript file, safe `localStorage` helpers, and a regrouped version of the script | `js/script.js` | I replaced my script with the new version and tested the name, the theme, the quote, the form and the navigation, and checked the Console for errors. Evidence: `artifacts/script.js` |
+| A06 | Claude (Sonnet 5.5) | 2026-11-27 | Fix for the mobile navigation wrapping at small phone widths | `css/styles.css` | I found the problem by testing iPhone SE width, applied the fix and checked 375, 440 and narrower widths. I decided to keep the header scrolling on phones instead of making it sticky. Evidence: `artifacts/styles.css` |
+| A07 | Claude (Sonnet 5.5) | 2026-11-27 | Guidance for deploying with GitHub Pages and for reading the Lighthouse results of the live site | none (settings on GitHub) | I did the deployment myself, tested the live link, ran Lighthouse on it and recorded the scores. Evidence: the conversation |
+| A08 | Claude (Sonnet 5.5) | 2026-11-27 | First draft of the technical documentation, and notes about the live Lighthouse results | `docs/technical-documentation.md` | I checked each statement against my code and filled in my own test results. Evidence: `artifacts/technical-documentation.md` |
+| A09 | Claude (Sonnet 5.5) | 2026-11-27 | First draft of the README | `README.md` | I checked the links and the scores. Evidence: `artifacts/README.md` |
+| A10 | Claude (Sonnet 5.5) | 2026-11-27 | First draft of the first four sections of this report | `docs/ai-usage-report.md` | I checked each statement against my code. Evidence: `artifacts/ai-usage-report.md` |
+| A11 | Claude (Sonnet 5.5) | 2026-11-27 | Outline for the presentation slides (number of slides, content of each, timing, visual and recording tips) | `presentation/slides.pdf` | I wrote the slide text in my own words, chose the screenshots and the demo order. I rehearsed with a timer to stay within 5-7 minutes. Evidence: the conversation |
 
 ## Declaration
 
@@ -83,4 +80,4 @@ I declare that this report and the attached evidence document all of my AI use i
 
 Name: Layan Alomari
 ID: 202351790
-Date: 2026-11-21
+Date: 2026-11-27

@@ -359,8 +359,16 @@ body.dark-mode #form-success {
     gap: 10px;
   }
 
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px 0;
+  }
+
   nav a {
-    margin: 0 10px;
+    margin: 0 7px;
+    font-size: 0.95rem;
   }
 
   .projects-container {
